@@ -30,14 +30,13 @@ cd $BUILD_DIR
 
 
 echo " update repo "
-apt-get $APT_OPTIONS update
+#apt-get $APT_OPTIONS update
 
 
 echo " adding add-apt-repo command package "
 
-sudo -i
 
-apt-get $APT_OPTIONS install software-properties-common python-software-properties
+apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common python3-software-properties
 
 
 
