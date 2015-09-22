@@ -86,7 +86,7 @@ ls $BUILD_DIR/.root/sbin
 echo "-----> which apt-get"
 which apt-get
 
-cp /usr/bin/apt-get $BUILD_DIR/.root/usr/bin/.
+ln /usr/bin/apt-get $BUILD_DIR/.root/usr/bin/
 
 
 echo "-----> after debootstrap, now chroot cmd "
