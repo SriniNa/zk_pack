@@ -23,14 +23,14 @@ APT_STATE_DIR="$CACHE_DIR/apt/state"
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
 
-APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
+APT_OPTIONS="-y --yes --force-yes -qq -o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
 
 
 cd $BUILD_DIR
 
 
 echo " update repo "
-apt-get $APT_OPTIONS -y --yes --force-yes update
+apt-get $APT_OPTIONS update
 
 
 echo " adding add-apt-repo command package "
@@ -43,7 +43,7 @@ echo " adding cdh5.3.5 to repo "
 add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
 
 echo " update repo "
-apt-get $APT_OPTIONS -y --yes --force-yes update
+apt-get $APT_OPTIONS update
 
 
 echo " installing zkeeper "
