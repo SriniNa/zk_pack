@@ -39,7 +39,7 @@ echo "-----> Fetching and installing wget"
 cd $WGET_BUILD
 curl -O http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.gz 
 tar -zxvf wget-1.16.3.tar.gz
-cd wget-1.13.4
+cd wget-1.16.3
 ./configure --prefix=$CACHE_DIR/.tools/wget --without-ssl 
 make 
 make install
