@@ -8,9 +8,11 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-echo " adding cdh5.3.5 to repo "
+echo " adding add-apt-repo command package "
 
-apt-get install software-properties-common python-software-properties
+sudo apt-get install software-properties-common python-software-properties
+
+echo " adding cdh5.3.5 to repo "
 add-apt-repository -y "deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib"
 apt-get update
 
