@@ -28,6 +28,11 @@ APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state
 
 cd $BUILD_DIR
 
+
+echo " update repo "
+apt-get $APT_OPTIONS update
+
+
 echo " adding add-apt-repo command package "
 
 apt-get $APT_OPTIONS install software-properties-common python-software-properties
@@ -38,7 +43,8 @@ echo " adding cdh5.3.5 to repo "
 add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
 
 echo " update repo "
-apt-get update
+apt-get $APT_OPTIONS update
+
 
 echo " installing zkeeper "
 
