@@ -35,6 +35,8 @@ apt-get $APT_OPTIONS update
 
 echo " adding add-apt-repo command package "
 
+sudo -i
+
 apt-get $APT_OPTIONS install software-properties-common python-software-properties
 
 
