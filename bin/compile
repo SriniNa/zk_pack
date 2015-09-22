@@ -10,6 +10,7 @@ CACHE_DIR=$2
 
 echo " adding cdh5.3.5 to repo "
 
+apt-get install software-properties-common python-software-properties
 add-apt-repository -y "deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib"
 apt-get update
 
