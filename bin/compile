@@ -70,11 +70,12 @@ mkdir -p $BUILD_DIR/.root
 fakechroot -s fakeroot debootstrap --no-check-gpg --variant=fakechroot --verbose --foreign lucid $BUILD_DIR/.root 
 
 ls $BUILD_DIR/.root
-cd $BUILD_DIR/.root
 
+ls $BUILD_DIR/.root/usr
+ls $BUILD_DIR/.root/usr/bin
 
 echo "-----> after debootstrap, now chroot cmd "
-fakechroot fakeroot chroot apt-get -y --force-yes install gpgv 
+fakechroot fakeroot chroot $BUILD_DIR/.root apt-get -y --force-yes install gpgv 
 echo "/app/.root bootstraped" | indent
 
 sed -i -e "s/#force_color_prompt=yes/force_color_prompt=yes/" $BUILD_DIR/.root/root/.bashrc
