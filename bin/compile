@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# fail fast
+set -e
+
+# parse args
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+echo " adding cdh5.3.5 to repo "
+
+add-apt-repository -y "deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib"
+apt-get update
+
+echo " installing zkeeper "
+
+apt-get --yes --force-yes install -t precise-cdh5.3.5 zookeeper zookeeper-server
+
+
