@@ -10,10 +10,11 @@ CACHE_DIR=$2
 
 echo " adding add-apt-repo command package "
 
-sudo apt-get install software-properties-common python-software-properties
+cd $BUILD_DIR
 
 echo " adding cdh5.3.5 to repo "
-add-apt-repository -y "deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib"
+deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib
+deb-src [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib
 apt-get update
 
 echo " installing zkeeper "
