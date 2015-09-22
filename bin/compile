@@ -69,10 +69,16 @@ echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
 mkdir -p $BUILD_DIR/.root
 fakechroot -s fakeroot debootstrap --no-check-gpg --variant=fakechroot --verbose --foreign lucid $BUILD_DIR/.root 
 
+echo "-----> /.root/"
 ls $BUILD_DIR/.root
 
-ls $BUILD_DIR/.root/usr
-ls $BUILD_DIR/.root/usr/bin
+echo "-----> /.root/usr/sbin"
+ls $BUILD_DIR/.root/usr/sbin
+
+
+echo "-----> /.root/bin"
+ls $BUILD_DIR/.root/bin
+
 
 echo "-----> after debootstrap, now chroot cmd "
 fakechroot fakeroot chroot $BUILD_DIR/.root apt-get -y --force-yes install gpgv 
