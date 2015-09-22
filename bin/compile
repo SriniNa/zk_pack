@@ -30,7 +30,7 @@ cd $BUILD_DIR
 
 
 echo " update repo "
-apt-get $APT_OPTIONS --yes update
+apt-get $APT_OPTIONS --yes --force-yes update
 
 
 echo " adding add-apt-repo command package "
@@ -43,7 +43,7 @@ echo " adding cdh5.3.5 to repo "
 add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
 
 echo " update repo "
-apt-get $APT_OPTIONS --yes update
+apt-get $APT_OPTIONS --yes --force-yes update
 
 
 echo " installing zkeeper "
