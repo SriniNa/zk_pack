@@ -30,7 +30,7 @@ cd $BUILD_DIR
 
 
 echo " update repo "
-#apt-get $APT_OPTIONS update
+apt-get $APT_OPTIONS update
 
 
 echo " adding add-apt-repo command package "
