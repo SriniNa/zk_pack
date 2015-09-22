@@ -79,6 +79,12 @@ ls $BUILD_DIR/.root/usr/sbin
 echo "-----> /.root/bin"
 ls $BUILD_DIR/.root/bin
 
+echo "-----> /.root/bin"
+ls $BUILD_DIR/.root/sbin
+
+
+echo "-----> which apt-get"
+which apt-get
 
 echo "-----> after debootstrap, now chroot cmd "
 fakechroot fakeroot chroot $BUILD_DIR/.root apt-get -y --force-yes install gpgv 
