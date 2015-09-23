@@ -22,6 +22,8 @@ function indent() {
 }
 
 
+BUILD_DIR=$1
+CACHE_DIR=$2
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
