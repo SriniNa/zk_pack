@@ -64,10 +64,16 @@ mkdir -p $BUILD_DIR/.root
 fakeroot debootstrap --no-check-gpg --arch=amd64 --variant=buildd --verbose --foreign lucid $BUILD_DIR/.root
 
 
+echo "-----> before gpgv"
 fakeroot chroot $BUILD_DIR/.root apt-get install -y --force-yes gpgv
 
+
+echo "-----> after gpgv"
+
 sed -i -e "s/#force_color_prompt=yes/force_color_prompt=yes/" $BUILD_DIR/.root/root/.bashrc
+echo "-----> after force color"
 echo "export PATH=/sbin:/usr/sbin:\$PATH" >> $BUILD_DIR/.root/root/.bashrc
+echo "-----> after export path"
 echo "cd $HOME" >> $BUILD_DIR/.root/root/.bashrc
 
 echo "-----> Updating packages"
