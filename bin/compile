@@ -65,7 +65,22 @@ fakeroot debootstrap --no-check-gpg --arch=amd64 --variant=buildd --verbose --fo
 
 
 
+sed -i -e "s/#force_color_prompt=yes/force_color_prompt=yes/" $BUILD_DIR/.root/root/.bashrc
+echo "export PATH=/sbin:/usr/sbin:\$PATH" >> $BUILD_DIR/.root/root/.bashrc
+echo "cd $HOME" >> $BUILD_DIR/.root/root/.bashrc
 
+echo "-----> Updating packages"
+fakechroot fakeroot chroot $BUILD_DIR/.root bash -c "cat > /etc/apt/sources.list <<EOF
+deb http://archive.ubuntu.com/ubuntu lucid main universe
+deb http://archive.ubuntu.com/ubuntu lucid-security main
+deb http://archive.ubuntu.com/ubuntu lucid-updates main
+EOF"
+
+fakeroot chroot $BUILD_DIR/.root apt-get update
+fakeroot chroot $BUILD_DIR/.root apt-get -y install $DEFAULT_DEB_PACKAGES
+echo "packages updated" | indent
+
+cd $BUILD_DIR/.root
 
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
@@ -88,6 +103,9 @@ echo " adding add-apt-repo command package "
 
 
 fakeroot apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
+
+
+
 
 
 
