@@ -77,7 +77,7 @@ fakeroot debootstrap --no-check-gpg --arch=amd64 --variant=buildd --verbose --fo
 
 
 echo "-----> before gpgv"
-fakechroot fakeroot chroot $BUILD_DIR/.root apt-get install -y --force-yes gpgv
+#fakechroot fakeroot chroot $BUILD_DIR/.root apt-get install -y --force-yes gpgv
 
 
 echo "-----> after gpgv"
@@ -96,7 +96,7 @@ deb http://archive.ubuntu.com/ubuntu lucid-updates main
 EOF"
 
 fakeroot chroot $BUILD_DIR/.root apt-get update
-fakeroot chroot $BUILD_DIR/.root apt-get -y install $DEFAULT_DEB_PACKAGES
+fakechroot fakeroot chroot $BUILD_DIR/.root apt-get -y install $DEFAULT_DEB_PACKAGES
 echo "packages updated" | indent
 
 cd $BUILD_DIR/.root
