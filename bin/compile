@@ -82,22 +82,6 @@ echo "-----> before gpgv"
 
 echo "-----> after gpgv"
 
-sed -i -e "s/#force_color_prompt=yes/force_color_prompt=yes/" $BUILD_DIR/.root/root/.bashrc
-echo "-----> after force color"
-echo "export PATH=/sbin:/usr/sbin:\$PATH" >> $BUILD_DIR/.root/root/.bashrc
-echo "-----> after export path"
-echo "cd $HOME" >> $BUILD_DIR/.root/root/.bashrc
-
-echo "-----> Updating packages"
-fakechroot fakeroot chroot $BUILD_DIR/.root bash -c "cat > /etc/apt/sources.list <<EOF
-deb http://archive.ubuntu.com/ubuntu lucid main universe
-deb http://archive.ubuntu.com/ubuntu lucid-security main
-deb http://archive.ubuntu.com/ubuntu lucid-updates main
-EOF"
-
-fakeroot chroot $BUILD_DIR/.root apt-get update
-fakechroot fakeroot chroot $BUILD_DIR/.root apt-get -y install $DEFAULT_DEB_PACKAGES
-echo "packages updated" | indent
 
 cd $BUILD_DIR/.root
 
@@ -111,17 +95,16 @@ mkdir -p "$APT_STATE_DIR/lists/partial"
 APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
 
 
-cd $BUILD_DIR
 
 
 echo " update repo "
-apt-get $APT_OPTIONS update
+fakechroot fakeroot apt-get $APT_OPTIONS update
 
 
 echo " adding add-apt-repo command package "
 
 
-fakeroot apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
+fakechroot fakeroot apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
 
 
 
