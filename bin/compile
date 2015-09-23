@@ -59,7 +59,7 @@ echo "debootstrap installed" | indent
 
 
 echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
-mkdio -p $BUILD_DIR/.root
+mkdir -p $BUILD_DIR/.root
 
 #fakeroot debootstrap --no-check-gpg --variant=fakechroot hoary $BUILD_DIR/.root
 
