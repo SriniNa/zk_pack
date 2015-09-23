@@ -98,13 +98,13 @@ APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o debug::nolocking=tr
 
 
 echo " update repo "
-fakechroot fakeroot apt-get $APT_OPTIONS update
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
 
 
 echo " adding add-apt-repo command package "
 
 
-fakechroot fakeroot apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
 
 
 
