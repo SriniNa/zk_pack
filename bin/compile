@@ -21,9 +21,52 @@ function indent() {
   esac
 }
 
-
+BUILDPACK_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILD_DIR=$1
 CACHE_DIR=$2
+
+WGET_BUILD="$(mktmpdir wget)"
+DEBOOTSTRAP_BUILD="$(mktmpdir debootstrap)"
+FAKECHROOT_BUILD="$(mktmpdir fakechroot)"
+DEFAULT_DEB_PACKAGES="aptitude git-core"
+
+mkdir -p $BUILD_DIR/.tools/fakechroot
+mkdir -p $CACHE_DIR/.tools/{wget,debootstrap}
+
+export PATH=/sbin:/usr/sbin:$PATH:$CACHE_DIR/.tools/wget/bin:$CACHE_DIR/.tools/debootstrap/usr/sbin:$BUILD_DIR/.tools/fakechroot/sbin:$BUILD_DIR/.tools/fakechroot/bin
+export DEBOOTSTRAP_DIR=$CACHE_DIR/.tools/debootstrap/usr/share/debootstrap
+
+echo "-----> Fetching and installing wget"
+cd $WGET_BUILD
+curl -O http://ftp.gnu.org/gnu/wget/wget-1.16.3.gz
+tar -xvzf wget-1.16.3.gz
+cd wget-1.16.3
+./configure --prefix=$CACHE_DIR/.tools/wget --without-ssl
+make
+make install
+echo "wget installed" | indent
+
+echo "-----> Fetching and installing debootstrap"
+cd $DEBOOTSTRAP_BUILD
+wget http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.72.tar.gz
+tar zxvf debootstrap_1.0.72.tar.gz
+cd debootstrap-1.0.72
+DESTDIR=$CACHE_DIR/.tools/debootstrap fakeroot make
+DESTDIR=$CACHE_DIR/.tools/debootstrap fakeroot make install
+echo "debootstrap installed" | indent
+
+
+
+
+echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
+mkdio -p $BUILD_DIR/.root
+
+#fakeroot debootstrap --no-check-gpg --variant=fakechroot hoary $BUILD_DIR/.root
+
+
+
+
+
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
@@ -44,12 +87,12 @@ apt-get $APT_OPTIONS update
 echo " adding add-apt-repo command package "
 
 
-apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
+fakeroot apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
 
 
 
 echo " adding cdh5.3.5 to repo "
-add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
+fakeroot add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
 
 echo " update repo "
 apt-get $APT_OPTIONS update
@@ -57,6 +100,6 @@ apt-get $APT_OPTIONS update
 
 echo " installing zkeeper "
 
-apt-get --yes --force-yes install -t precise-cdh5.3.5 zookeeper zookeeper-server
+fakeroot apt-get --yes --force-yes install -t precise-cdh5.3.5 zookeeper zookeeper-server
 
 
