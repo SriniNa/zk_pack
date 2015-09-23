@@ -64,6 +64,7 @@ mkdir -p $BUILD_DIR/.root
 fakeroot debootstrap --no-check-gpg --arch=amd64 --variant=buildd --verbose --foreign lucid $BUILD_DIR/.root
 
 
+fakeroot chroot $BUILD_DIR/.root apt-get install -y --force-yes gpgv
 
 sed -i -e "s/#force_color_prompt=yes/force_color_prompt=yes/" $BUILD_DIR/.root/root/.bashrc
 echo "export PATH=/sbin:/usr/sbin:\$PATH" >> $BUILD_DIR/.root/root/.bashrc
