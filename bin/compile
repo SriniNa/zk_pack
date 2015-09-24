@@ -73,7 +73,7 @@ echo "fakechroot vendored" | indent
 echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
 mkdir -p $BUILD_DIR/.root
 
-fakeroot debootstrap --no-check-gpg --arch=amd64 --verbose --foreign lucid $BUILD_DIR/.root
+fakeroot debootstrap --no-check-gpg --arch=amd64 --verbose --foreign hardy $BUILD_DIR/.root
 
 
 echo "-----> before gpgv"
@@ -87,13 +87,13 @@ echo "-----> after gpgv"
 
 cd $BUILD_DIR/.root
 
-wget https://launchpad.net/ubuntu/+archive/primary/+files/apt_0.7.25.3ubuntu7.tar.gz
+#wget https://launchpad.net/ubuntu/+archive/primary/+files/apt_0.7.25.3ubuntu7.tar.gz
 
-tar zxvf apt_0.7.25.3ubuntu7.tar.gz
-cd apt-0.7.25.3ubuntu7
+#tar zxvf apt_0.7.25.3ubuntu7.tar.gz
+#cd apt-0.7.25.3ubuntu7
 
-fakeroot fakechroot chroot $BUILD_DIR/.root bash -c ./configure
-fakeroot fakechroot chroot $BUILD_DIR/.root bash -c make
+#fakeroot fakechroot chroot $BUILD_DIR/.root bash -c ./configure
+#fakeroot fakechroot chroot $BUILD_DIR/.root bash -c make
 
 cd ..
 
