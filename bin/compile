@@ -75,7 +75,7 @@ mkdir -p $BUILD_DIR/.root
 
 fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --include=apt precise $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
 
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i apt
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i apt_0.8.16~exp12ubuntu10_amd64.deb
 
 
 echo "-----> before gpgv"
