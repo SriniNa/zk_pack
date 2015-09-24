@@ -104,6 +104,7 @@ wget http://es.archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo5_5.9-4_amd
 wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/readline-common_6.2-8_all.deb
 wget http://es.archive.ubuntu.com/ubuntu/pool/main/libu/libusb/libusb-0.1-4_0.1.12-20_amd64.deb
 wget http://es.archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.2.3.4.dfsg-3ubuntu4_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-1.0_1.0.6-1_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
 
 wget http://launchpadlibrarian.net/85594007/gnupg_1.4.11-3ubuntu2_amd64.deb
