@@ -148,8 +148,11 @@ cd ..
 echo "-------> in bin dir"
 ls $BUILD_DIR/.root/usr/bin/
 
-APT_CACHE_DIR="$BUILD_DIR/.root/$CACHE_DIR/apt/cache"
-APT_STATE_DIR="$BUILD_DIR/.root/$CACHE_DIR/apt/state"
+
+cd $BUILD_DIR/.root
+
+APT_CACHE_DIR="$BUILD_DIR/.root/apt/cache"
+APT_STATE_DIR="$BUILD_DIR/.root/apt/state"
 
 mkdir -p "$APT_CACHE_DIR"
 mkdir -p "$APT_STATE_DIR"
