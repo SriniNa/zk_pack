@@ -166,7 +166,7 @@ fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
 echo " adding add-apt-repo command package "
 
 
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y install software-properties-common
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install software-properties-common
 
 
 
@@ -174,14 +174,14 @@ fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-y
 
 
 echo " adding cdh5.3.5 to repo "
-fakeroot add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
+fakeroot fakechroot chroot $BUILD_DIR/.root add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
 
 echo " update repo "
-apt-get $APT_OPTIONS update
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
 
 
 echo " installing zkeeper "
 
-fakeroot apt-get --yes --force-yes install -t precise-cdh5.3.5 zookeeper zookeeper-server
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get --yes --force-yes -f install -t precise-cdh5.3.5 zookeeper zookeeper-server
 
 
