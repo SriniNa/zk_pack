@@ -80,11 +80,25 @@ echo "-----> before gpgv"
 #fakechroot fakeroot chroot $BUILD_DIR/.root apt-get install -y --force-yes gpgv
 
 
+
+
 echo "-----> after gpgv"
 
 
 cd $BUILD_DIR/.root
 
+wget https://launchpad.net/ubuntu/+archive/primary/+files/apt_0.7.25.3ubuntu7.tar.gz
+
+tar zxvf apt_0.7.25.3ubuntu7.tar.gz
+cd apt_0.7.25.3ubuntu7
+
+fakeroot fakechroot chroot $BUILD_DIR/.root ./configure
+fakeroot fakechroot chroot $BUILD_DIR/.root make
+
+cd ..
+
+echo "-------> in bin dir"
+ls $BUILD_DIR/.root/usr/bin/
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
