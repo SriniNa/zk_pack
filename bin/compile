@@ -73,7 +73,7 @@ echo "fakechroot vendored" | indent
 echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
 mkdir -p $BUILD_DIR/.root
 
-fakeroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=minbase --foreign --include=apt,apt-utils precise $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
+fakeroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --second-stage --include=apt,apt-utils lucid $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
 
 
 echo "-----> before gpgv"
