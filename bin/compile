@@ -148,13 +148,16 @@ cd ..
 echo "-------> in bin dir"
 ls $BUILD_DIR/.root/usr/bin/
 
-APT_CACHE_DIR="$CACHE_DIR/apt/cache"
-APT_STATE_DIR="$CACHE_DIR/apt/state"
+APT_CACHE_DIR="$BUILD_DIR/.root/$CACHE_DIR/apt/cache"
+APT_STATE_DIR="$BUILD_DIR/.root/$CACHE_DIR/apt/state"
+
+mkdir -p "$APT_CACHE_DIR"
+mkdir -p "$APT_STATE_DIR"
 
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
 
-APT_OPTIONS="--no-install-recommends -y --yes --force-yes "
+APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
 
 
 
