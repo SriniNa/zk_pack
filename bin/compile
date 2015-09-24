@@ -166,9 +166,12 @@ fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
 echo " adding add-apt-repo command package "
 
 
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install
+
 fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install software-properties-common
 
 
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install
 
 
 
