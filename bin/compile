@@ -107,6 +107,7 @@ wget http://es.archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.2.3.4.dfsg-3u
 wget http://es.archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-1.0_1.0.6-1_amd64.deb
 wget http://ftp.es.debian.org/debian/pool/main/g/gnupg/gpgv_1.4.18-7_amd64.deb
 wget http://ftp.es.debian.org/debian/pool/main/r/readline6/libreadline6_6.3-8+b3_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/x/xz-utils/liblzma5_5.1.1alpha+20120614-2+b3_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
 
 wget http://launchpadlibrarian.net/85594007/gnupg_1.4.11-3ubuntu2_amd64.deb
