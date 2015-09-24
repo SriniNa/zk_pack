@@ -79,22 +79,22 @@ fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=
 cd $BUILD_DIR/.root
 
 wget http://es.archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2011.11.21.1_all.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i ubuntu-keyring_2011.11.21.1_all.deb
+#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i ubuntu-keyring_2011.11.21.1_all.deb
 
 
 wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/multiarch-support_2.15-0ubuntu10.11_amd64.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i multiarch-support_2.15-0ubuntu10.11_amd64.deb
+#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i multiarch-support_2.15-0ubuntu10.11_amd64.deb
 
 
 wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libgcc1_4.9.2-10_amd64.deb
+#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libgcc1_4.9.2-10_amd64.deb
 
 wget http://ftp.es.debian.org/debian/pool/main/g/glibc/libc6_2.19-18+deb8u1_amd64.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libc6_2.19-18+deb8u1_amd64.deb
+#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libc6_2.19-18+deb8u1_amd64.deb
 
 
 wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libstdc++6_4.9.2-10_amd64.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
 
 wget http://launchpadlibrarian.net/85594007/gnupg_1.4.11-3ubuntu2_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i gnupg_1.4.11-3ubuntu2_amd64.deb
