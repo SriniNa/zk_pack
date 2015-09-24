@@ -93,7 +93,17 @@ wget http://ftp.es.debian.org/debian/pool/main/g/glibc/libc6_2.19-18+deb8u1_amd6
 #fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libc6_2.19-18+deb8u1_amd64.deb
 
 
+
+
 wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
+#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
+
+
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/libreadline6_6.2-8_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo5_5.9-4_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/readline-common_6.2-8_all.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/libu/libusb/libusb-0.1-4_0.1.12-20_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.2.3.4.dfsg-3ubuntu4_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
 
 wget http://launchpadlibrarian.net/85594007/gnupg_1.4.11-3ubuntu2_amd64.deb
