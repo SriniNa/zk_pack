@@ -76,6 +76,8 @@ mkdir -p $BUILD_DIR/.root
 fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --include=apt precise $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
 
 
+cd $BUILD_DIR/.root
+
 wget http://launchpadlibrarian.net/102675856/apt_0.8.16~exp12ubuntu10_amd64.deb
 
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i apt_0.8.16~exp12ubuntu10_amd64.deb
@@ -90,7 +92,6 @@ echo "-----> before gpgv"
 echo "-----> after gpgv"
 
 
-cd $BUILD_DIR/.root
 
 #wget https://launchpad.net/ubuntu/+archive/primary/+files/apt_0.7.25.3ubuntu7.tar.gz
 
