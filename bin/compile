@@ -115,8 +115,8 @@ fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i gnupg_1.4.11-3ubuntu2_amd64.
 
 
 
-wget http://ftp.es.debian.org/debian/pool/main/a/apt/libapt-pkg4.12_1.0.9.8.1_amd64.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libapt-pkg4.12_1.0.9.8.1_amd64.deb
+wget http://launchpadlibrarian.net/102675854/libapt-pkg4.12_0.8.16~exp12ubuntu10_amd64.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libapt-pkg4.12_0.8.16~exp12ubuntu10_amd64.deb
  
 
 
