@@ -82,6 +82,9 @@ wget http://es.archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyri
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i ubuntu-keyring_2011.11.21.1_all.deb
 
 
+wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/multiarch-support_2.15-0ubuntu10.11_amd64.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i multiarch-support_2.15-0ubuntu10.11_amd64.deb
+
 
 wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libgcc1_4.9.2-10_amd64.deb
