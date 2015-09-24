@@ -83,12 +83,12 @@ fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i ubuntu-keyring_2011.11.21.1_
 
 
 
+wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libgcc1_4.9.2-10_amd64.deb
 
 wget http://ftp.es.debian.org/debian/pool/main/g/glibc/libc6_2.19-18+deb8u1_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libc6_2.19-18+deb8u1_amd64.deb
 
-wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb
-fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libgcc1_4.9.2-10_amd64.deb
 
 wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libstdc++6_4.9.2-10_amd64.deb
