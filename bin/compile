@@ -164,7 +164,7 @@ ls $BUILD_DIR/.root/apt
 ls $BUILD_DIR/.root/apt/cache
 ls $BUILD_DIR/.root/apt/cache/archives
 
-APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o dir::cache=$APT_CACHE_DIR"
+APT_OPTIONS="-y --yes --force-yes"
 
 
 
@@ -176,12 +176,12 @@ fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
 echo " adding add-apt-repo command package "
 
 
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install
+#fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS -f install
 
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install software-properties-common
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS -f install software-properties-common
 
 
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS --yes --force-yes -y -f install
+fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS -f install
 
 
 
