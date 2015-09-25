@@ -109,7 +109,7 @@ cd $BUILD_DIR/.root
 #wget http://ftp.es.debian.org/debian/pool/main/r/readline6/libreadline6_6.3-8+b3_amd64.deb
 #wget http://ftp.es.debian.org/debian/pool/main/x/xz-utils/liblzma5_5.1.1alpha+20120614-2+b3_amd64.deb
 
-wget http://launchpadlibrarian.net/198723532/libc6_2.11.1-0ubuntu7.21_amd64.deb
+wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/libc6-dev_2.15-0ubuntu10.11_amd64.deb
 wget http://launchpadlibrarian.net/44240952/apt_0.7.25.3ubuntu7_amd64.deb
 
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
