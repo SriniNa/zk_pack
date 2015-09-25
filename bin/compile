@@ -162,7 +162,7 @@ mkdir -p "$BUILD_DIR/.root/apt/state/lists/partial"
 
 ls $BUILD_DIR/.root/apt
 
-APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
+APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o dir::cache=$APT_CACHE_DIR"
 
 
 
