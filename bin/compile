@@ -73,7 +73,7 @@ echo "fakechroot vendored" | indent
 echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
 mkdir -p $BUILD_DIR/.root
 
-fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --include=apt precise $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
+fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --include=apt lucid $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
 
 
 cd $BUILD_DIR/.root
@@ -125,23 +125,8 @@ wget http://launchpadlibrarian.net/102675856/apt_0.8.16~exp12ubuntu10_amd64.deb
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i apt_0.8.16~exp12ubuntu10_amd64.deb
 
 
-echo "-----> before gpgv"
-#fakechroot fakeroot chroot $BUILD_DIR/.root apt-get install -y --force-yes gpgv
 
 
-
-
-echo "-----> after gpgv"
-
-
-
-#wget https://launchpad.net/ubuntu/+archive/primary/+files/apt_0.7.25.3ubuntu7.tar.gz
-
-#tar zxvf apt_0.7.25.3ubuntu7.tar.gz
-#cd apt-0.7.25.3ubuntu7
-
-#fakeroot fakechroot chroot $BUILD_DIR/.root bash -c ./configure
-#fakeroot fakechroot chroot $BUILD_DIR/.root bash -c make
 
 cd ..
 
@@ -150,51 +135,4 @@ ls $BUILD_DIR/.root/usr/bin/
 
 
 cd $BUILD_DIR/.root
-
-APT_CACHE_DIR="$BUILD_DIR/.root/apt/cache"
-APT_STATE_DIR="$BUILD_DIR/.root/apt/state"
-
-mkdir -p "$APT_CACHE_DIR"
-mkdir -p "$APT_STATE_DIR"
-
-mkdir -p "$BUILD_DIR/.root/apt/cache/archives/partial"
-mkdir -p "$BUILD_DIR/.root/apt/state/lists/partial"
-
-ls $BUILD_DIR/.root/apt
-ls $BUILD_DIR/.root/apt/cache
-ls $BUILD_DIR/.root/apt/cache/archives
-
-APT_OPTIONS="-y --yes --force-yes"
-
-
-
-
-echo " update repo "
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
-
-
-echo " adding add-apt-repo command package "
-
-
-#fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS -f install
-
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS -f install software-properties-common
-
-
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS -f install
-
-
-
-
-echo " adding cdh5.3.5 to repo "
-fakeroot fakechroot chroot $BUILD_DIR/.root add-apt-repository -y \"deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh precise-cdh5.3.5 contrib\"
-
-echo " update repo "
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get $APT_OPTIONS update
-
-
-echo " installing zkeeper "
-
-fakeroot fakechroot chroot $BUILD_DIR/.root apt-get --yes --force-yes -f install -t precise-cdh5.3.5 zookeeper zookeeper-server
-
 
