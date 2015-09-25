@@ -73,54 +73,52 @@ echo "fakechroot vendored" | indent
 echo "-----> Bootstraping a new base ubuntu lucid into /app/.root/"
 mkdir -p $BUILD_DIR/.root
 
-fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --include=apt lucid $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
+fakeroot fakechroot debootstrap --no-check-gpg --arch=amd64 --verbose --variant=fakechroot --foreign --include=apt precise $BUILD_DIR/.root http://archive.ubuntu.com/ubuntu/
 
 
 cd $BUILD_DIR/.root
 
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2011.11.21.1_all.deb
-#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i ubuntu-keyring_2011.11.21.1_all.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2011.11.21.1_all.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i ubuntu-keyring_2011.11.21.1_all.deb
 
 
-#wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/multiarch-support_2.15-0ubuntu10.11_amd64.deb
+wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/multiarch-support_2.15-0ubuntu10.11_amd64.deb
 #fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i multiarch-support_2.15-0ubuntu10.11_amd64.deb
 
 
-#wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libgcc1_4.9.2-10_amd64.deb
 #fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libgcc1_4.9.2-10_amd64.deb
 
-#wget http://ftp.es.debian.org/debian/pool/main/g/glibc/libc6_2.19-18+deb8u1_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/g/glibc/libc6_2.19-18+deb8u1_amd64.deb
 #fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libc6_2.19-18+deb8u1_amd64.deb
 
 
 
 
-#wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/g/gcc-4.9/libstdc++6_4.9.2-10_amd64.deb
 #fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
 
 
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/libreadline6_6.2-8_amd64.deb
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo5_5.9-4_amd64.deb
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/readline-common_6.2-8_all.deb
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/libu/libusb/libusb-0.1-4_0.1.12-20_amd64.deb
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.2.3.4.dfsg-3ubuntu4_amd64.deb
-#wget http://es.archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-1.0_1.0.6-1_amd64.deb
-#wget http://ftp.es.debian.org/debian/pool/main/g/gnupg/gpgv_1.4.18-7_amd64.deb
-#wget http://ftp.es.debian.org/debian/pool/main/r/readline6/libreadline6_6.3-8+b3_amd64.deb
-#wget http://ftp.es.debian.org/debian/pool/main/x/xz-utils/liblzma5_5.1.1alpha+20120614-2+b3_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/libreadline6_6.2-8_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo5_5.9-4_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/r/readline6/readline-common_6.2-8_all.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/libu/libusb/libusb-0.1-4_0.1.12-20_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.2.3.4.dfsg-3ubuntu4_amd64.deb
+wget http://es.archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-1.0_1.0.6-1_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/g/gnupg/gpgv_1.4.18-7_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/r/readline6/libreadline6_6.3-8+b3_amd64.deb
+wget http://ftp.es.debian.org/debian/pool/main/x/xz-utils/liblzma5_5.1.1alpha+20120614-2+b3_amd64.deb
 
-wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/libc6-dev_2.15-0ubuntu10.11_amd64.deb
-wget http://launchpadlibrarian.net/44240952/apt_0.7.25.3ubuntu7_amd64.deb
 
 fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i --force-all *.deb
 
-#wget http://launchpadlibrarian.net/85594007/gnupg_1.4.11-3ubuntu2_amd64.deb
-#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i gnupg_1.4.11-3ubuntu2_amd64.deb
+wget http://launchpadlibrarian.net/85594007/gnupg_1.4.11-3ubuntu2_amd64.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i gnupg_1.4.11-3ubuntu2_amd64.deb
 
 
 
-#wget http://launchpadlibrarian.net/102675854/libapt-pkg4.12_0.8.16~exp12ubuntu10_amd64.deb
-#fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libapt-pkg4.12_0.8.16~exp12ubuntu10_amd64.deb
+wget http://launchpadlibrarian.net/102675854/libapt-pkg4.12_0.8.16~exp12ubuntu10_amd64.deb
+fakeroot fakechroot chroot $BUILD_DIR/.root dpkg -i libapt-pkg4.12_0.8.16~exp12ubuntu10_amd64.deb
  
 
 
