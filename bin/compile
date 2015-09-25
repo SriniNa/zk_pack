@@ -161,6 +161,8 @@ mkdir -p "$BUILD_DIR/.root/apt/cache/archives/partial"
 mkdir -p "$BUILD_DIR/.root/apt/state/lists/partial"
 
 ls $BUILD_DIR/.root/apt
+ls $BUILD_DIR/.root/apt/cache
+ls $BUILD_DIR/.root/apt/cache/archives
 
 APT_OPTIONS="--no-install-recommends -y --yes --force-yes -o dir::cache=$APT_CACHE_DIR"
 
